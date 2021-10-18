@@ -25,6 +25,7 @@ builder.Services
     );
 
 builder.Services.AddSingleton<AuthenticationService>();
+builder.Services.AddScoped<UserService>();
 builder.Services.AddSingleton(mapper);
 
 builder.Services.AddControllers();

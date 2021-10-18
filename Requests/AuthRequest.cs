@@ -1,4 +1,4 @@
-namespace AuthApi.Models
+namespace AuthApi.Requests
 {
     public class AuthRequest
     {

@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using AuthApi.Models;
+using AuthApi.Requests;
 using AuthApi.Context;
 using AuthApi.Services;
 using BCryptNet = BCrypt.Net.BCrypt;

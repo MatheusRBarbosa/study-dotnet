@@ -9,5 +9,6 @@ namespace AuthApi.Models
         public string name { get; set; }
         public string cpf { get; set; }
         public string password { get; set; }
+        public string cellphone { get; set; }
     }
 }
