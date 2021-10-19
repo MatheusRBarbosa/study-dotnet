@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations.Schema;
 namespace AuthApi.Models
 {
     public class User
@@ -10,5 +11,8 @@ namespace AuthApi.Models
         public string cpf { get; set; }
         public string password { get; set; }
         public string cellphone { get; set; }
+
+        [ForeignKey("roleId")]
+        public Role role { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 using BCryptNet = BCrypt.Net.BCrypt;
+using Microsoft.EntityFrameworkCore;
 using AutoMapper;
 using AuthApi.Context;
 using AuthApi.Models;
@@ -7,7 +8,13 @@ using AuthApi.Dtos;
 
 namespace AuthApi.Services
 {
-    public class UserService
+    public interface IUserService
+    {
+        Task<User> Create(CreateUserRequest request);
+        Task<UserDto> Get(int id);
+    }
+
+    public class UserService : IUserService
     {
         private readonly AuthContext context;
         private readonly IMapper mapper;
@@ -40,7 +47,10 @@ namespace AuthApi.Services
 
         public async Task<UserDto> Get(int id)
         {
-            var user = await this.context.users.FindAsync(id);
+            var user = await this.context.users
+                .Include(user => user.role)
+                .FirstAsync(user => user.id == id);
+
             return this.mapper.Map<UserDto>(user);
         }
     }
